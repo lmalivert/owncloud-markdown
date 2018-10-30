@@ -94,3 +94,77 @@ The following procedure explains how to manually install ownCloud server on Cent
 6. If SELinux is enabled, set the correct context on the ownCloud Apache directory.
 
        chcon --verbose --recursive --reference /var/www/html /var/www/owncloud
+
+7. Change ownership of Apache ownCloud directory to the Apache user.
+
+       chown -R apache:apache /var/www/owncloud/
+
+8. Open the firewall port for needed for ownCloud Http service.
+
+       firewall-cmd --permanent --add-port=80/tcp && firewall-cmd –reload
+
+9.    Start and enable the Apache service.
+
+           systemctl start httpd && systemctl enable httpd
+
+In the web browser of your choice (e.g., Google Chrome, Internet Explorer, Firefox, etc.), enter the IP address of the ownCloud server and login with the default administrator credentials.
+
+**TIP** The default administrator credentials are _Administrator_ and the root password.
+
+## Chapter 3. Connecting Users to the ownCloud Server
+
+### 3.1 Enabling Users to Connect to the ownCloud Server
+
+The following procedure explains how to enable a user to connect to the ownCloud server using the server's IP address and port 8080.
+
+**To connect users to the ownCloud server using the CLI**
+
+1. Configure the Apache service to listen on port 8080.
+
+       vi /etc/httpd/conf/httpd.conf and add the following line: Listen <ipaddress>:8080
+
+2. Open the firewall port 8080.
+
+       firewall-cmd --permanent --add-port=8080/tcp && firewall-cmd –reload
+
+3. Restart the Apache service.
+
+       Restart the Apache service.
+
+4.   In the web browser of your choice (e.g., Google Chrome, Internet Explorer, Firefox, etc.), enter the IP address of the ownCloud server and login with the default administrator credentials.
+
+**TIP**      The default administrator credentials are _Administrator_ and the root password.
+
+## Chapter 4. Adding a User Account to the ownCloud Server
+
+### 4.1 Adding a User Account
+
+The following procedure explains how to add a user account to the ownCloud server.
+
+**To add a user account using the web UI**
+
+1. Click the *Administrator* drop-down menu.
+2. Select **Users**.
+3. In the **Username** field, enter a username.
+4. In the **E-Mail** field, enter a valid e-mail address.
+5. Click **Create**.
+
+## Chapter 5. Connecting to the ownCloud Server Using External Devices
+
+The ownCloud desktop client enables you to keep your data synced and gives you access to the latest files wherever you are.
+
+**To connect to one of the following desktop clients, click the appropriate link and follow the download procedure:**
+
+* [ownCloud Desktop Client for MacOS](https://owncloud.org/download/#owncloud-desktop-client-macos)
+* [ownCloud Desktop Client for Windows](https://owncloud.org/download/#owncloud-desktop-client-windows)
+* [ownCloud Desktop Client for Linux](link:https://owncloud.org/download/#owncloud-desktop-client-linux)
+
+### 5.2 Connecting to the ownCloud Server Using a Mobile Device
+
+These mobile apps enable you to access, sync, and upload your data on the run. Mobile apps are available in both the [Apple Store](https://itunes.apple.com/us/app/owncloud/id543672169?ls=1&mt=8) and the [Google Play Store](https://play.google.com/store/apps/details?id=com.owncloud.android).
+
+**To connect to one of the following mobile apps, click the appropriate link and follow the download procedure:**
+
+[iOS](https://owncloud.org/download/#owncloud-mobile-apps-ios)
+
+[Android](https://owncloud.org/download/#owncloud-mobile-apps-android)
