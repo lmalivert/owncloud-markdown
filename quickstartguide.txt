@@ -94,5 +94,3 @@ The following procedure explains how to manually install ownCloud server on Cent
 6. If SELinux is enabled, set the correct context on the ownCloud Apache directory.
 
        chcon --verbose --recursive --reference /var/www/html /var/www/owncloud
-
-       
